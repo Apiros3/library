@@ -1,0 +1,18 @@
+ABC_submit () {
+    oj-bundle -I ../../library "$1$2"_AC.cpp > out.cpp &&
+    rm -rf test &&
+    oj download https://atcoder.jp/contests/abc"$1"/tasks/abc"$1"_"$2"
+    g++ out.cpp &&
+    oj t -c "./a.out" -S -D -t 2 --mle 1024 -i -j 10 --print-memory && 
+    oj submit https://atcoder.jp/contests/abc"$1"/tasks/abc"$1"_"$2" out.cpp 
+}
+
+ABC_submit_f () {
+    oj-bundle -I ../../library "$1$2"_AC.cpp > out.cpp &&
+    rm -rf test &&
+    oj download https://atcoder.jp/contests/abc"$1"/tasks/abc"$1"_"$2"
+    g++ out.cpp &&
+    oj t -c "./a.out" -S -D -t 2 --mle 1024 -i -j 10 --error 1e-9 --print-memory && 
+    oj submit https://atcoder.jp/contests/abc"$1"/tasks/abc"$1"_"$2" out.cpp 
+}
+
