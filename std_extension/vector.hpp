@@ -4,32 +4,119 @@
 #include <vector>
 #include "general/fixed_integer.hpp"
 
-template <typename T>
-std::vector<T> &operator +=(std::vector<T> &a, const std::vector<T> &b) {
-    assert(a.size() == b.size());
-    for(i8 i = 0; i < a.size(); i++) {
-        a[i] += b[i];
+
+template<typename T>
+std::vector<T>& operator +=(std::vector<T> &lhs, const std::vector<T> &rhs) {
+    if (lhs.size() != rhs.size()) {
+        throw std::length_error("vectors must be same size to add");
     }
-    return a;
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] += rhs[i];
+    }
+    return lhs;
 }
-template <typename T>
-std::vector<T> &operator -=(std::vector<T> &a, const std::vector<T> &b) {
-    assert(a.size() == b.size());
-    for(i8 i = 0; i < a.size(); i++) {
-        a[i] -= b[i];
+template<typename T>
+std::vector<T> operator +(std::vector<T> lhs, const std::vector<T> &rhs) {
+    return lhs += rhs;
+}
+template<typename T>
+std::vector<T>& operator -=(std::vector<T> &lhs, const std::vector<T> &rhs) {
+    if (lhs.size() != rhs.size()) {
+        throw std::length_error("vectors must be same size to subtract");
     }
-    return a;
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] -= rhs[i];
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator -(std::vector<T> lhs, const std::vector<T> &rhs) {
+    return lhs -= rhs;
+}
+template<typename T>
+std::vector<T>& operator *=(std::vector<T> &lhs, const std::vector<T> &rhs) {
+    if (lhs.size() != rhs.size()) {
+        throw std::length_error("vectors must be same size to multiply");
+    }
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] *= rhs[i];
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator *(std::vector<T> lhs, const std::vector<T> &rhs) {
+    return lhs *= rhs;
+}
+template<typename T>
+std::vector<T>& operator /=(std::vector<T> &lhs, const std::vector<T> &rhs) {
+    if (lhs.size() != rhs.size()) {
+        throw std::length_error("vectors must be same size to divide");
+    }
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] /= rhs[i];
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator /(std::vector<T> lhs, const std::vector<T> &rhs) {
+    return lhs /= rhs;
 }
 
-template <typename T>
-std::vector<T> operator +(std::vector<T> a, const std::vector<T> &b) {
-    return a += b;
+template<typename T>
+std::vector<T>& operator +=(std::vector<T> &lhs, const T& rhs) {
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] += rhs;
+    }
+    return lhs;
 }
-template <typename T>
-std::vector<T> operator -(std::vector<T> a, const std::vector<T> &b) {
-    return a -= b;
+template<typename T>
+std::vector<T> operator +(std::vector<T> lhs, const T& rhs) {
+    return lhs += rhs;
 }
-
+template<typename T>
+std::vector<T>& operator -=(std::vector<T> &lhs, const T& rhs) {
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] -= rhs;
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator -(std::vector<T> lhs, const T& rhs) {
+    return lhs -= rhs;
+}
+template<typename T>
+std::vector<T>& operator *=(std::vector<T> &lhs, const T& rhs) {
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] *= rhs;
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator *(std::vector<T> lhs, const T& rhs) {
+    return lhs *= rhs;
+}
+template<typename T>
+std::vector<T>& operator /=(std::vector<T> &lhs, const T& rhs) {
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] /= rhs;
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator /(std::vector<T> lhs, const T& rhs) {
+    return lhs /= rhs;
+}
+template<typename T>
+std::vector<T>& operator %=(std::vector<T> &lhs, const T& rhs) {
+    for(int i = 0; i < lhs.size(); ++i) {
+        lhs[i] %= rhs;
+    }
+    return lhs;
+}
+template<typename T>
+std::vector<T> operator %(std::vector<T> lhs, const T& rhs) {
+    return lhs %= rhs;
+}
 
 
 #endif

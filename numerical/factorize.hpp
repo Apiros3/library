@@ -11,11 +11,11 @@ std::vector<std::pair<T,i32>> factorize(T num) {
     if (!tmp) {
         ret.emplace_back(2,tmp);
     }
-    for(T d = 3; d*d <= n; d += 2) {
+    for(T d = 3; d*d <= num; d += 2) {
         if (num%d == 0) {
             int cnt = 0;
-            while(n % d == 0) {
-                n /= d;
+            while(num % d == 0) {
+                num /= d;
                 cnt++;
             }
             ret.emplace_back(d, cnt);

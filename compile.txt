@@ -1,4 +1,8 @@
-compile () {
+compile_s () {
     g++ -I /mnt/c/Users/lemon/Coding/cp-main/library** -std=c++17 "$1" &&
     oj-bundle -I /mnt/c/Users/lemon/Coding/cp-main/library** "$1" > out.cpp
+}
+
+compile () {
+    g++ -I /mnt/c/Users/lemon/Coding/cp-main/library** -std=c++17 "$1"
 }

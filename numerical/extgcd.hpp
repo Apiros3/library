@@ -2,11 +2,13 @@
 #define EXTGCD
 
 #include <iostream>
+#include <cassert>
 #include "general/fixed_integer.hpp"
 
 // returns gcd of a and b
 // stores (x,y) s.t. ax + by = gcd(a,b)
-i64 extGCD(i64 a, i64 b, i64 &x, i64 &y) {
+template <typename T>
+T extGCD(T a, T b, T &x, T &y) {
     if (b == 0) {
         x = 1;
         y = 0;
@@ -18,9 +20,18 @@ i64 extGCD(i64 a, i64 b, i64 &x, i64 &y) {
      * d = by + ax - (a/b)bx 
      * d = ax + b(y - (a/b)x)
      */
-    i64 d = extGCD(b, a%b, y, x);
+    T d = extGCD(b, a%b, y, x);
     y -= (a/b)*x;
     return d;
 }
+
+template <typename T, typename W>
+T invmod(T inv, W mod) {    
+    T X, Y;
+    assert(extGCD(inv, (T)mod, X, Y) == 1);
+    return X;
+}
+
+
 
 #endif

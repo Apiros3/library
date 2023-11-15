@@ -34,7 +34,7 @@ std::set<T> &operator |=(std::set<T> &a, const std::set<T> &b) {
 }
 template <typename T>
 std::set<T> &operator &=(std::set<T> &a, const std::set<T> &b) {
-    set<T> st;
+    std::set<T> st;
     for(T u : b) {
         if (a.count(u)) {
             st.insert(u);
@@ -44,7 +44,7 @@ std::set<T> &operator &=(std::set<T> &a, const std::set<T> &b) {
 }
 template <typename T>
 std::set<T> &operator -=(std::set<T> &a, const std::set<T> &b) {
-    set<T> st;
+    std::set<T> st;
     for(T u : b) {
         if (!a.count(u)) {
             st.insert(u);
@@ -53,10 +53,10 @@ std::set<T> &operator -=(std::set<T> &a, const std::set<T> &b) {
     return a = st;
 }
 
-template <typename T>
-std::set<std::set<T>> powerset(std::set<T> st) {
+// template <typename T>
+// std::set<std::set<T>> powerset(std::set<T> st) {
 
     
-}
+// }
 
 #endif
